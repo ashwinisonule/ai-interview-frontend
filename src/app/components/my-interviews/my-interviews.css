@@ -1,0 +1,759 @@
+/* =========================================
+   PAGE
+========================================= */
+
+.my-interviews-page {
+  min-height: 100vh;
+  background: #f7f8fc;
+  color: #20232d;
+}
+
+
+/* =========================================
+   TOPBAR
+========================================= */
+
+.topbar {
+  min-height: 72px;
+  padding: 0 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #ffffff;
+  border-bottom: 1px solid #e8eaf0;
+}
+
+
+/* =========================================
+   BRAND
+========================================= */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-logo {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  background: linear-gradient(
+    135deg,
+    #6d5dfc,
+    #8b5cf6
+  );
+
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 800;
+
+  box-shadow:
+    0 5px 14px rgba(109, 93, 252, 0.20);
+}
+
+
+/* IMPORTANT:
+   HTML मध्ये brand-text class नाही.
+   म्हणून .brand > div:last-child वापरले आहे.
+*/
+
+.brand > div:last-child h2 {
+  margin: 0;
+
+  color: #171923;
+
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.brand > div:last-child span {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #8b91a1;
+
+  font-size: 12px;
+  font-weight: 500;
+}
+
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+.back-btn {
+  padding: 9px 14px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: #655df5;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+  background: #f1efff;
+
+  transform: translateX(-2px);
+}
+
+
+/* =========================================
+   PAGE CONTENT
+========================================= */
+
+.page-content {
+  width: min(
+    1180px,
+    calc(100% - 40px)
+  );
+
+  margin: 0 auto;
+
+  padding: 45px 0 65px;
+}
+
+
+/* =========================================
+   PAGE HEADER
+========================================= */
+
+.page-header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 30px;
+}
+
+.label {
+  margin: 0 0 8px;
+
+  color: #6d5dfc;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+}
+
+.page-header h1 {
+  margin: 0;
+
+  color: #171923;
+
+  font-size: 34px;
+  line-height: 1.2;
+  font-weight: 750;
+}
+
+.page-header p:not(.label) {
+  margin: 9px 0 0;
+
+  color: #808694;
+
+  font-size: 15px;
+}
+
+
+/* =========================================
+   GRID
+========================================= */
+
+.interviews-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 22px;
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.interview-card {
+  padding: 23px;
+
+  background: #ffffff;
+
+  border: 1px solid #e7e9ef;
+  border-radius: 17px;
+
+  box-shadow:
+    0 7px 25px
+    rgba(31, 41, 55, 0.05);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.interview-card:hover {
+  transform: translateY(-3px);
+
+  border-color: #ddd9ff;
+
+  box-shadow:
+    0 12px 32px
+    rgba(31, 41, 55, 0.09);
+}
+
+
+/* =========================================
+   CARD TOP
+========================================= */
+
+.card-top {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  margin-bottom: 17px;
+}
+
+.interview-icon {
+  width: 45px;
+  height: 45px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: #efedff;
+
+  color: #6d5dfc;
+
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.completed-badge {
+  padding: 6px 10px;
+
+  border-radius: 20px;
+
+  background: #eaf8f0;
+
+  color: #159447;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.interview-card h2 {
+  margin: 0;
+
+  color: #242833;
+
+  font-size: 19px;
+  line-height: 1.35;
+  font-weight: 700;
+
+  word-break: break-word;
+}
+
+.job-role {
+  margin: 6px 0 20px;
+
+  color: #6d5dfc;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+
+/* =========================================
+   DETAILS
+========================================= */
+
+.details {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 10px;
+
+  padding: 15px;
+
+  background: #f8f9fc;
+
+  border-radius: 11px;
+}
+
+.detail {
+  min-width: 0;
+}
+
+.detail span {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #9297a4;
+
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.detail strong {
+  display: block;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  color: #373c48;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   COMPLETED DATE
+========================================= */
+
+.completed-date {
+  margin-top: 15px;
+
+  padding-top: 14px;
+
+  border-top: 1px solid #eceef3;
+
+  color: #7d8390;
+
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.completed-date span {
+  margin-right: 5px;
+
+  font-weight: 700;
+
+  color: #555b68;
+}
+
+
+/* =========================================
+   ACTIONS
+========================================= */
+
+.card-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin-top: 18px;
+}
+
+
+/* =========================================
+   VIEW RESULT BUTTON
+========================================= */
+
+.result-btn {
+  flex: 1;
+
+  min-height: 42px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: linear-gradient(
+    135deg,
+    #6d5dfc,
+    #8b5cf6
+  );
+
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.result-btn:hover {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 7px 17px
+    rgba(109, 93, 252, 0.25);
+}
+
+.result-btn:active {
+  transform: scale(0.98);
+}
+
+
+/* =========================================
+   DELETE BUTTON
+========================================= */
+
+.delete-btn {
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #f0d5d5;
+
+  border-radius: 9px;
+
+  background: #fff5f5;
+
+  color: #d93636;
+
+  font-size: 16px;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.delete-btn:hover {
+  background: #ffe6e6;
+
+  border-color: #e3a4a4;
+
+  color: #c62828;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 5px 12px
+    rgba(217, 54, 54, 0.10);
+}
+
+.delete-btn:active {
+  transform: scale(0.94);
+}
+
+
+/* =========================================
+   EMPTY / LOADING STATE
+========================================= */
+
+.empty-state {
+  max-width: 600px;
+
+  margin: 70px auto;
+
+  padding: 50px 30px;
+
+  text-align: center;
+
+  background: #ffffff;
+
+  border: 1px solid #e7e9ef;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 8px 25px
+    rgba(31, 41, 55, 0.05);
+}
+
+.empty-icon {
+  width: 64px;
+  height: 64px;
+
+  margin: 0 auto 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 16px;
+
+  background: #efedff;
+
+  color: #6d5dfc;
+
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.empty-state h2 {
+  margin: 0;
+
+  color: #252936;
+
+  font-size: 22px;
+}
+
+.empty-state p {
+  margin: 9px 0 22px;
+
+  color: #858b99;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   CREATE NEW INTERVIEW BUTTON
+========================================= */
+
+.primary-btn {
+  padding: 12px 21px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: linear-gradient(
+    135deg,
+    #6d5dfc,
+    #8b5cf6
+  );
+
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.primary-btn:hover {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 8px 18px
+    rgba(109, 93, 252, 0.25);
+}
+
+.primary-btn:active {
+  transform: scale(0.98);
+}
+
+
+/* =========================================
+   RESPONSIVE - TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+
+  .interviews-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+/* =========================================
+   RESPONSIVE - MOBILE
+========================================= */
+
+@media (max-width: 680px) {
+
+  .topbar {
+    min-height: 68px;
+
+    padding: 0 18px;
+
+    gap: 12px;
+  }
+
+
+  .page-content {
+    width: calc(100% - 24px);
+
+    padding-top: 30px;
+    padding-bottom: 45px;
+  }
+
+
+  .page-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 15px;
+  }
+
+
+  .page-header h1 {
+    font-size: 28px;
+  }
+
+
+  .interviews-grid {
+    grid-template-columns: 1fr;
+
+    gap: 17px;
+  }
+
+
+  .interview-card {
+    padding: 19px;
+  }
+
+
+  .brand > div:last-child h2 {
+    font-size: 16px;
+  }
+
+
+  .brand > div:last-child span {
+    font-size: 10px;
+  }
+
+
+  .brand-logo {
+    width: 39px;
+    height: 39px;
+
+    border-radius: 10px;
+  }
+
+
+  .back-btn {
+    padding: 8px 10px;
+
+    font-size: 12px;
+  }
+
+
+  .details {
+    padding: 13px;
+  }
+
+
+  .empty-state {
+    margin: 45px auto;
+
+    padding: 40px 20px;
+  }
+
+}
+
+
+/* =========================================
+   VERY SMALL MOBILE
+========================================= */
+
+@media (max-width: 420px) {
+
+  .topbar {
+    padding: 0 12px;
+  }
+
+
+  .brand {
+    gap: 8px;
+  }
+
+
+  .brand-logo {
+    width: 36px;
+    height: 36px;
+
+    font-size: 12px;
+  }
+
+
+  .brand > div:last-child h2 {
+    font-size: 14px;
+  }
+
+
+  .brand > div:last-child span {
+    display: none;
+  }
+
+
+  .back-btn {
+    font-size: 11px;
+    padding: 7px 8px;
+  }
+
+
+  .page-header h1 {
+    font-size: 25px;
+  }
+
+
+  .interview-card h2 {
+    font-size: 17px;
+  }
+
+
+  .card-actions {
+    gap: 7px;
+  }
+
+
+  .result-btn {
+    min-height: 40px;
+
+    font-size: 12px;
+  }
+
+
+  .delete-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+}

@@ -1,0 +1,304 @@
+<div class="interview-page">
+
+  <!-- TOPBAR -->
+
+  <header class="interview-topbar">
+
+    <div class="brand">
+
+      <div class="brand-logo">
+        AI
+      </div>
+
+      <div>
+        <h2>AI Interview</h2>
+        <span>Live Interview</span>
+      </div>
+
+    </div>
+
+
+    <div class="interview-title">
+
+      <strong>
+        {{ interview?.title }}
+      </strong>
+
+      <span>
+        {{ interview?.jobRole }}
+      </span>
+
+    </div>
+
+
+    <div class="timer">
+
+      <span class="timer-icon">
+        ⏱
+      </span>
+
+      <div>
+        <small>Time Remaining</small>
+
+        <strong>
+          {{ minutes }}:{{ seconds }}
+        </strong>
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- MAIN -->
+
+  <main class="interview-content">
+
+    <!-- LEFT -->
+
+    <section class="question-section">
+
+      <!-- PROGRESS -->
+
+      <div class="progress-area">
+
+        <div class="progress-info">
+
+          <span>
+            Question {{ currentQuestion + 1 }}
+            of {{ questions.length }}
+          </span>
+
+          <span>
+            {{ progress | number:'1.0-0' }}%
+          </span>
+
+        </div>
+
+        <div class="progress-bar">
+
+          <div
+            class="progress-fill"
+            [style.width.%]="progress"
+          ></div>
+
+        </div>
+
+      </div>
+
+
+      <!-- QUESTION CARD -->
+
+      <div class="question-card">
+
+        <div class="question-number">
+          Q{{ currentQuestion + 1 }}
+        </div>
+
+        <div class="question-content">
+
+          <p class="question-label">
+            INTERVIEW QUESTION
+          </p>
+
+          <h1>
+            {{ questions[currentQuestion] }}
+          </h1>
+
+        </div>
+
+      </div>
+
+
+      <!-- ANSWER -->
+
+      <div class="answer-card">
+
+        <div class="answer-header">
+
+          <div>
+
+            <h2>Your Answer</h2>
+
+            <p>
+              Explain your answer clearly and provide
+              examples where appropriate.
+            </p>
+
+          </div>
+
+          <span>
+            {{ answers[currentQuestion]?.length || 0 }}
+            characters
+          </span>
+
+        </div>
+
+
+        <textarea
+          [(ngModel)]="answers[currentQuestion]"
+          placeholder="Type your answer here..."
+        ></textarea>
+
+      </div>
+
+
+      <!-- NAVIGATION -->
+
+      <div class="question-actions">
+
+        <button
+          class="previous-btn"
+          (click)="previousQuestion()"
+          [disabled]="currentQuestion === 0"
+        >
+          ← Previous
+        </button>
+
+
+        <button
+          *ngIf="
+            currentQuestion <
+            questions.length - 1
+          "
+          class="next-btn"
+          (click)="nextQuestion()"
+        >
+          Next Question →
+        </button>
+
+
+        <button
+          *ngIf="
+            currentQuestion ===
+            questions.length - 1
+          "
+          class="submit-btn"
+          (click)="submitInterview()"
+        >
+          Submit Interview ✓
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- RIGHT SIDEBAR -->
+
+    <aside class="interview-sidebar">
+
+      <!-- DETAILS -->
+
+      <div class="sidebar-card">
+
+        <h3>Interview Details</h3>
+
+        <div class="detail-row">
+
+          <span>Role</span>
+
+          <strong>
+            {{ interview?.jobRole }}
+          </strong>
+
+        </div>
+
+        <div class="detail-row">
+
+          <span>Experience</span>
+
+          <strong>
+            {{ interview?.experience }}
+          </strong>
+
+        </div>
+
+        <div class="detail-row">
+
+          <span>Difficulty</span>
+
+          <strong class="difficulty">
+            {{ interview?.difficulty }}
+          </strong>
+
+        </div>
+
+        <div class="detail-row">
+
+          <span>Type</span>
+
+          <strong>
+            {{ interview?.interviewType }}
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <!-- QUESTION NAVIGATOR -->
+
+      <div class="sidebar-card">
+
+        <h3>Questions</h3>
+
+        <div class="question-numbers">
+
+          <button
+            *ngFor="
+              let question of questions;
+              let i = index
+            "
+            [class.active]="
+              i === currentQuestion
+            "
+            [class.answered]="
+              answers[i]
+            "
+            (click)="currentQuestion = i"
+          >
+            {{ i + 1 }}
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- TIP -->
+
+      <div class="tip-card">
+
+        <div class="tip-icon">
+          AI
+        </div>
+
+        <div>
+
+          <strong>Interview Tip</strong>
+
+          <p>
+            Take your time and explain your
+            thought process clearly.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- EXIT -->
+
+      <button
+        class="exit-btn"
+        (click)="exitInterview()"
+      >
+        Exit Interview
+      </button>
+
+    </aside>
+
+  </main>
+
+</div>

@@ -1,0 +1,232 @@
+<div class="my-interviews-page">
+
+  <header class="topbar">
+
+    <div class="brand">
+
+      <div class="brand-logo">
+        AI
+      </div>
+
+      <div>
+        <h2>AI Interview</h2>
+        <span>My Completed Interviews</span>
+      </div>
+
+    </div>
+
+
+    <button
+      class="back-btn"
+      (click)="cancel()"
+    >
+      ← Dashboard
+    </button>
+
+  </header>
+
+
+  <main class="page-content">
+
+    <section class="page-header">
+
+      <div>
+
+        <p class="label">
+          INTERVIEW HISTORY
+        </p>
+
+        <h1>
+          My Interviews
+        </h1>
+
+        <p>
+          View all your completed interview results.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- LOADING -->
+
+    <section
+      class="empty-state"
+      *ngIf="loading"
+    >
+
+      <h2>
+        Loading interviews...
+      </h2>
+
+    </section>
+
+
+    <!-- EMPTY -->
+
+    <section
+      class="empty-state"
+      *ngIf="
+        !loading &&
+        interviews.length === 0
+      "
+    >
+
+      <div class="empty-icon">
+        AI
+      </div>
+
+      <h2>
+        No Completed Interviews
+      </h2>
+
+      <p>
+        Your completed interviews will appear here.
+      </p>
+
+      <button
+        class="primary-btn"
+        (click)="backToDashboard()"
+      >
+        Create New Interview
+      </button>
+
+    </section>
+
+
+    <!-- INTERVIEWS -->
+
+    <section
+      class="interviews-grid"
+      *ngIf="
+        !loading &&
+        interviews.length > 0
+      "
+    >
+
+      <div
+        class="interview-card"
+        *ngFor="
+          let interview of interviews
+        "
+      >
+
+        <div class="card-top">
+
+          <div class="interview-icon">
+            AI
+          </div>
+
+          <span class="completed-badge">
+            ✓ Completed
+          </span>
+
+        </div>
+
+
+        <h2>
+          {{ interview.title }}
+        </h2>
+
+
+        <p class="job-role">
+          {{ interview.jobRole }}
+        </p>
+
+
+        <div class="details">
+
+          <div class="detail">
+
+            <span>
+              Experience
+            </span>
+
+            <strong>
+              {{ interview.experience }}
+            </strong>
+
+          </div>
+
+
+          <div class="detail">
+
+            <span>
+              Difficulty
+            </span>
+
+            <strong>
+              {{ interview.difficulty }}
+            </strong>
+
+          </div>
+
+
+          <div class="detail">
+
+            <span>
+              Questions
+            </span>
+
+            <strong>
+              {{ interview.numberOfQuestions }}
+            </strong>
+
+          </div>
+
+
+          <div class="detail">
+
+            <span>
+              Duration
+            </span>
+
+            <strong>
+              {{ interview.duration }} min
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div
+          class="completed-date"
+          *ngIf="interview.completedAt"
+        >
+
+          Completed:
+          {{ interview.completedAt |
+             date:'dd MMM yyyy, hh:mm a' }}
+
+        </div>
+
+
+        <div class="card-actions">
+
+          <button
+            class="result-btn"
+            (click)="viewResult(interview)"
+          >
+            View Result →
+          </button>
+
+
+          <button
+            class="delete-btn"
+            title="Delete Interview"
+            (click)="deleteInterview(interview)"
+          >
+            🗑
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>

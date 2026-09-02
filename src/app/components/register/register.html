@@ -1,0 +1,112 @@
+<div class="register-page">
+
+  <div class="register-card">
+
+    <div class="logo">
+      AI
+    </div>
+
+    <h1>Create Account</h1>
+
+    <p>
+      Create your AI Interview account
+    </p>
+
+
+    <form
+      (ngSubmit)="register()"
+    >
+
+      <div class="form-group">
+
+        <label>
+          Full Name
+        </label>
+
+        <input
+          type="text"
+          name="name"
+          [(ngModel)]="name"
+          placeholder="Enter your name"
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          Email
+        </label>
+
+        <input
+          type="email"
+          name="email"
+          [(ngModel)]="email"
+          placeholder="Enter your email"
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          Password
+        </label>
+
+        <input
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          placeholder="Enter password"
+        >
+
+      </div>
+
+
+      <p
+        class="error"
+        *ngIf="errorMessage"
+      >
+        {{ errorMessage }}
+      </p>
+
+
+      <p
+        class="success"
+        *ngIf="successMessage"
+      >
+        {{ successMessage }}
+      </p>
+
+
+      <button
+        type="submit"
+        [disabled]="loading"
+      >
+
+        {{
+          loading
+            ? 'Creating Account...'
+            : 'Create Account'
+        }}
+
+      </button>
+
+    </form>
+
+
+    <div class="login-link">
+  Already have an account?
+
+  <a
+    routerLink="/login"
+    class="login-text"
+  >
+    Login
+  </a>
+</div>
+  </div>
+
+</div>

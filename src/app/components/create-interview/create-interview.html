@@ -1,0 +1,374 @@
+<div class="create-page">
+
+  <!-- TOPBAR -->
+
+  <header class="topbar">
+
+    <div class="brand">
+
+      <div class="brand-logo">
+        AI
+      </div>
+
+      <div>
+        <h2>AI Interview</h2>
+        <span>Smart Interview Platform</span>
+      </div>
+
+    </div>
+
+    <button
+      class="back-btn"
+      (click)="cancel()"
+    >
+      ← Dashboard
+    </button>
+
+  </header>
+
+
+  <!-- CONTENT -->
+
+  <main class="create-content">
+
+    <div class="page-heading">
+
+      <div>
+        <p class="heading-label">
+          INTERVIEW SETUP
+        </p>
+
+        <h1>Start New Interview</h1>
+
+        <p>
+          Configure your interview and let AI prepare
+          personalized questions for you.
+        </p>
+      </div>
+
+    </div>
+
+
+    <!-- FORM CARD -->
+
+    <div class="form-card">
+
+      <div class="card-title">
+
+        <div class="title-icon">
+          ✦
+        </div>
+
+        <div>
+          <h2>Interview Details</h2>
+          <p>Tell us about the interview you want to practice.</p>
+        </div>
+
+      </div>
+
+
+      <form (ngSubmit)="createInterview()">
+
+        <!-- TITLE -->
+
+        <div class="form-group full">
+
+          <label>
+            Interview Title
+            <span>*</span>
+          </label>
+
+          <input
+            type="text"
+            name="interviewTitle"
+            [(ngModel)]="interviewTitle"
+            placeholder="e.g. Frontend Developer Interview"
+            required
+          >
+
+        </div>
+
+
+        <!-- JOB ROLE -->
+
+        <div class="form-row">
+
+          <div class="form-group">
+
+            <label>
+              Job Role
+              <span>*</span>
+            </label>
+
+            <select
+              name="jobRole"
+              [(ngModel)]="jobRole"
+              required
+            >
+
+              <option value="">
+                Select job role
+              </option>
+
+              <option value="Frontend Developer">
+                Frontend Developer
+              </option>
+
+              <option value="Backend Developer">
+                Backend Developer
+              </option>
+
+              <option value="Full Stack Developer">
+                Full Stack Developer
+              </option>
+
+              <option value="Angular Developer">
+                Angular Developer
+              </option>
+
+              <option value="Java Developer">
+                Java Developer
+              </option>
+
+              <option value="Python Developer">
+                Python Developer
+              </option>
+
+              <option value="Software Developer">
+                Software Developer
+              </option>
+
+              <option value="Data Analyst">
+                Data Analyst
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <!-- EXPERIENCE -->
+
+          <div class="form-group">
+
+            <label>
+              Experience
+              <span>*</span>
+            </label>
+
+            <select
+              name="experience"
+              [(ngModel)]="experience"
+              required
+            >
+
+              <option value="">
+                Select experience
+              </option>
+
+              <option value="Fresher">
+                Fresher
+              </option>
+
+              <option value="0-1 Years">
+                0 - 1 Years
+              </option>
+
+              <option value="1-3 Years">
+                1 - 3 Years
+              </option>
+
+              <option value="3-5 Years">
+                3 - 5 Years
+              </option>
+
+              <option value="5+ Years">
+                5+ Years
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+
+        <!-- DIFFICULTY + TYPE -->
+
+        <div class="form-row">
+
+          <div class="form-group">
+
+            <label>
+              Difficulty
+              <span>*</span>
+            </label>
+
+            <select
+              name="difficulty"
+              [(ngModel)]="difficulty"
+              required
+            >
+
+              <option value="">
+                Select difficulty
+              </option>
+
+              <option value="Easy">
+                Easy
+              </option>
+
+              <option value="Medium">
+                Medium
+              </option>
+
+              <option value="Hard">
+                Hard
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Interview Type
+              <span>*</span>
+            </label>
+
+            <select
+              name="interviewType"
+              [(ngModel)]="interviewType"
+              required
+            >
+
+              <option value="">
+                Select interview type
+              </option>
+
+              <option value="Technical">
+                Technical
+              </option>
+
+              <option value="Behavioral">
+                Behavioral
+              </option>
+
+              <option value="HR">
+                HR
+              </option>
+
+              <option value="Mixed">
+                Mixed
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+
+        <!-- QUESTIONS + DURATION -->
+
+        <div class="form-row">
+
+          <div class="form-group">
+
+            <label>
+              Number of Questions
+            </label>
+
+            <select
+              name="numberOfQuestions"
+              [(ngModel)]="numberOfQuestions"
+            >
+
+              <option [ngValue]="5">5 Questions</option>
+              <option [ngValue]="10">10 Questions</option>
+              <option [ngValue]="15">15 Questions</option>
+              <option [ngValue]="20">20 Questions</option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Duration
+            </label>
+
+            <select
+              name="duration"
+              [(ngModel)]="duration"
+            >
+
+              <option [ngValue]="15">15 Minutes</option>
+              <option [ngValue]="30">30 Minutes</option>
+              <option [ngValue]="45">45 Minutes</option>
+              <option [ngValue]="60">60 Minutes</option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+
+        <!-- AI INFO -->
+
+        <div class="ai-info">
+
+          <div class="ai-info-icon">
+            AI
+          </div>
+
+          <div>
+
+            <strong>
+              AI-Powered Interview
+            </strong>
+
+            <p>
+              Questions will be generated based on
+              your selected role, experience and difficulty.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- BUTTONS -->
+
+        <div class="form-actions">
+
+          <button
+            type="button"
+            class="cancel-btn"
+            (click)="cancel()"
+          >
+            Cancel
+          </button>
+
+          <button
+            type="submit"
+            class="create-btn"
+          >
+            Start Interview
+            <span>→</span>
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </main>
+
+</div>

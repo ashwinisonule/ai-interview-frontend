@@ -1,0 +1,321 @@
+<div class="evaluation-page">
+
+  <!-- NAVBAR -->
+
+  <header class="topbar">
+
+    <div class="brand">
+
+      <div class="brand-logo">
+        AI
+      </div>
+
+      <div>
+        <h2>AI Interview</h2>
+        <span>Interview Evaluation</span>
+      </div>
+
+    </div>
+
+    <button
+      class="back-btn"
+      (click)="cancel()"
+    >
+      ← Dashboard
+    </button>
+
+  </header>
+
+
+  <!-- CONTENT -->
+
+  <main class="evaluation-content">
+
+    <!-- HEADER -->
+
+    <section class="page-header">
+
+      <div>
+
+        <p class="label">
+          INTERVIEW COMPLETED 🎉
+        </p>
+
+        <h1>
+          Your Interview Evaluation
+        </h1>
+
+        <p>
+          Here's an overview of your interview performance.
+        </p>
+
+      </div>
+
+      <div class="completed-badge">
+        ✓ Completed
+      </div>
+
+    </section>
+
+
+    <!-- SCORE -->
+
+    <section class="score-card">
+
+      <div
+  class="score-circle"
+  [style.--score]="score"
+>
+
+        <div class="score-inner">
+
+          <strong>
+            {{ score }}%
+          </strong>
+
+          <span>
+            Score
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="score-info">
+
+        <p class="score-label">
+          OVERALL PERFORMANCE
+        </p>
+
+        <h2>
+          {{ scoreMessage }}
+        </h2>
+
+        <p>
+          You answered
+          <strong>{{ answered }}</strong>
+          out of
+          <strong>{{ totalQuestions }}</strong>
+          questions.
+        </p>
+
+        <div class="score-bar">
+
+          <div
+            [class]="scoreClass"
+            [style.width.%]="score"
+          ></div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- STATS -->
+
+    <section class="stats-grid">
+
+      <div class="stat-card">
+
+        <div class="stat-icon purple">
+          Q
+        </div>
+
+        <div>
+          <span>Total Questions</span>
+          <strong>{{ totalQuestions }}</strong>
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-icon green">
+          ✓
+        </div>
+
+        <div>
+          <span>Answered</span>
+          <strong>{{ answered }}</strong>
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-icon orange">
+          %
+        </div>
+
+        <div>
+          <span>Completion</span>
+          <strong>{{ score }}%</strong>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ANALYSIS -->
+
+    <section class="analysis-grid">
+
+
+      <!-- STRENGTHS -->
+
+      <div class="analysis-card">
+
+        <div class="analysis-header">
+
+          <div class="analysis-icon strength">
+            ✓
+          </div>
+
+          <div>
+
+            <h2>Strengths</h2>
+
+            <p>
+              Areas where you performed well
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="analysis-list">
+
+          <div
+            class="analysis-item"
+            *ngFor="let item of strengths"
+          >
+
+            <span class="check">
+              ✓
+            </span>
+
+            <span>
+              {{ item }}
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- IMPROVEMENTS -->
+
+      <div class="analysis-card">
+
+        <div class="analysis-header">
+
+          <div class="analysis-icon improvement">
+            ↑
+          </div>
+
+          <div>
+
+            <h2>Areas to Improve</h2>
+
+            <p>
+              Focus on these areas for better results
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="analysis-list">
+
+          <div
+            class="analysis-item"
+            *ngFor="let item of improvements"
+          >
+
+            <span class="arrow">
+              →
+            </span>
+
+            <span>
+              {{ item }}
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- AI FEEDBACK -->
+
+    <section class="ai-feedback">
+
+      <div class="ai-icon">
+        AI
+      </div>
+
+      <div class="feedback-content">
+
+        <p class="feedback-label">
+          AI FEEDBACK
+        </p>
+
+        <h2>
+          Keep building your confidence
+        </h2>
+
+        <p>
+          Interview performance improves with consistent
+          practice. Review your answers, understand the
+          concepts behind them and try another interview
+          to track your progress.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- ACTIONS -->
+
+    <section class="actions">
+
+      <button
+      class="back-btn"
+      (click)="cancel()"
+    >
+      ← Dashboard
+    </button>
+
+      <button
+        class="secondary-btn"
+        (click)="viewResult()"
+      >
+       ← View Detailed Result
+      </button>
+
+      <button
+        class="primary-btn"
+        (click)="retakeInterview()"
+      >
+        Retake Interview →
+      </button>
+
+    </section>
+
+  </main>
+
+</div>

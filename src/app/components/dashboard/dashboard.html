@@ -1,0 +1,188 @@
+<div class="dashboard-page">
+
+  <!-- NAVBAR -->
+
+  <header class="topbar">
+
+    <div class="brand">
+
+      <div class="brand-logo">
+        AI
+      </div>
+
+      <div class="brand-text">
+        <h2>AI Interview</h2>
+        <span>Smart Interview Platform</span>
+      </div>
+
+    </div>
+
+    <nav class="nav-links">
+
+      
+
+    </nav>
+
+    <div class="profile-section">
+
+      <div class="profile-avatar">
+        {{ userName.charAt(0).toUpperCase() }}
+      </div>
+
+      <div class="profile-info">
+        <strong>{{ userName }}</strong>
+        <span>Candidate</span>
+      </div>
+
+      <button
+        class="logout-btn"
+        (click)="logout()"
+      >
+        Logout
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <!-- MAIN CONTENT -->
+
+  <main class="dashboard-content">
+
+    <!-- WELCOME -->
+
+    <section class="welcome-section">
+
+      <div>
+
+        <p class="welcome-label">
+          WELCOME BACK 👋
+        </p>
+
+        <h1>
+          Hello, {{ userName }}
+        </h1>
+
+        <p class="welcome-text">
+          Ready to improve your interview skills?
+          Start a new AI-powered interview today.
+        </p>
+
+      </div>
+
+      <button
+        class="primary-btn"
+        routerLink="/create-interview"
+      >
+        + start Interview
+      </button>
+
+    </section>
+
+
+    
+
+    <!-- QUICK ACTIONS -->
+
+    <section class="section-block">
+
+      <div class="section-header">
+
+        <div>
+          <h2>Quick Actions</h2>
+          <p>Start preparing for your next interview.</p>
+        </div>
+
+      </div>
+
+
+      <div class="action-grid">
+
+        <div
+          class="action-card"
+          routerLink="/create-interview"
+        >
+
+          <div class="action-icon">
+            +
+          </div>
+
+          <div>
+            <h3>Start Interview</h3>
+
+            <p>
+              Create a personalized AI interview
+              based on your job role.
+            </p>
+          </div>
+
+          <span class="arrow">→</span>
+
+        </div>
+
+
+        <div
+          class="action-card"
+          routerLink="/my-interviews"
+        >
+
+          <div class="action-icon blue-icon">
+            ▣
+          </div>
+
+          <div>
+            <h3>My Interviews</h3>
+
+            <p>
+              View your previous interviews
+              and performance.
+            </p>
+          </div>
+
+          <span class="arrow">→</span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- GET STARTED -->
+
+    <section class="get-started">
+
+      <div class="get-started-content">
+
+        <div class="ai-circle">
+          AI
+        </div>
+
+        <div>
+
+          <h2>
+            Ready for your next interview?
+          </h2>
+
+          <p>
+            Choose a role, select your difficulty
+            and let AI prepare the interview for you.
+          </p>
+
+        </div>
+
+      </div>
+
+      <button
+        routerLink="/create-interview"
+        class="start-btn"
+      >
+        Start AI Interview →
+      </button>
+
+    </section>
+
+  </main>
+
+</div>

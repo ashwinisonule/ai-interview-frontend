@@ -1,0 +1,463 @@
+<div class="result-page">
+
+  <!-- ==================================================
+       TOPBAR
+  ================================================== -->
+
+  <header class="topbar">
+
+    <div class="brand">
+
+      <div class="brand-logo">
+        AI
+      </div>
+
+      <div>
+
+        <h2>
+          AI Interview
+        </h2>
+
+        <span>
+          Detailed Result
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <button
+      class="back-btn"
+      (click)="cancel()"
+    >
+      ← Dashboard
+    </button>
+
+  </header>
+
+
+  <!-- ==================================================
+       LOADING
+  ================================================== -->
+
+  <main
+    class="result-content"
+    *ngIf="loading"
+  >
+
+    <section class="empty-state">
+
+      <div class="loading-icon">
+        AI
+      </div>
+
+      <h2>
+        Loading Result...
+      </h2>
+
+      <p>
+        Please wait while we fetch your interview result.
+      </p>
+
+    </section>
+
+  </main>
+
+
+  <!-- ==================================================
+       ERROR
+  ================================================== -->
+
+  <main
+    class="result-content"
+    *ngIf="!loading && errorMessage"
+  >
+
+    <section class="empty-state">
+
+      <div class="loading-icon">
+        !
+      </div>
+
+      <h2>
+        Result Not Found
+      </h2>
+
+      <p>
+        {{ errorMessage }}
+      </p>
+
+      <button
+        class="primary-btn"
+        (click)="cancel()"
+      >
+        ← Dashboard
+      </button>
+
+    </section>
+
+  </main>
+
+
+  <!-- ==================================================
+       RESULT CONTENT
+  ================================================== -->
+
+  <main
+    class="result-content"
+    *ngIf="!loading && result"
+  >
+
+
+    <!-- ==================================================
+         HEADER
+    ================================================== -->
+
+    <section class="result-header">
+
+      <p class="label">
+        DETAILED RESULT
+      </p>
+
+      <h1>
+        Interview Result
+      </h1>
+
+      <p>
+        Here is your detailed interview performance.
+      </p>
+
+    </section>
+
+
+    <!-- ==================================================
+         SCORE
+    ================================================== -->
+
+    <section class="main-score-card">
+
+      <div
+        class="score-circle"
+        [style.--score]="score"
+      >
+
+        <div class="score-inner">
+
+          <strong>
+            {{ score }}%
+          </strong>
+
+          <span>
+            Final Score
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="score-details">
+
+        <h2>
+          {{ interviewTitle }}
+        </h2>
+
+        <p>
+          {{ jobRole }}
+        </p>
+
+
+        <div class="score-status">
+
+          <span
+            *ngIf="score >= 80"
+            class="excellent"
+          >
+            Excellent
+          </span>
+
+
+          <span
+            *ngIf="score >= 50 && score < 80"
+            class="average"
+          >
+            Good
+          </span>
+
+
+          <span
+            *ngIf="score < 50"
+            class="poor"
+          >
+            Needs Improvement
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         STATS
+    ================================================== -->
+
+    <section class="stats-grid">
+
+
+      <div class="stat-card">
+
+        <div class="stat-icon purple">
+          Q
+        </div>
+
+        <div>
+
+          <span>
+            Total Questions
+          </span>
+
+          <strong>
+            {{ totalQuestions }}
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-icon green">
+          ✓
+        </div>
+
+        <div>
+
+          <span>
+            Correct Answers
+          </span>
+
+          <strong>
+            {{ correctAnswers }}
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-icon red">
+          ×
+        </div>
+
+        <div>
+
+          <span>
+            Wrong Answers
+          </span>
+
+          <strong>
+            {{ wrongAnswers }}
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-icon orange">
+          ?
+        </div>
+
+        <div>
+
+          <span>
+            Unanswered
+          </span>
+
+          <strong>
+            {{ unanswered }}
+          </strong>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         QUESTION RESULTS
+    ================================================== -->
+
+    <section class="questions-section">
+
+      <div class="section-title">
+
+        <h2>
+          Question Results
+        </h2>
+
+        <p>
+          Review your answers and performance.
+        </p>
+
+      </div>
+
+
+      <div
+        class="question-card"
+        *ngFor="
+          let item of result.questions;
+          let i = index
+        "
+      >
+
+
+        <!-- QUESTION TOP -->
+
+        <div class="question-top">
+
+          <span class="question-number">
+            Question {{ i + 1 }}
+          </span>
+
+
+          <!-- CORRECT -->
+
+          <span
+            *ngIf="
+              isAnswered(item) &&
+              isCorrect(item)
+            "
+            class="correct-badge"
+          >
+            ✓ Correct
+          </span>
+
+
+          <!-- WRONG -->
+
+          <span
+            *ngIf="
+              isAnswered(item) &&
+              !isCorrect(item)
+            "
+            class="wrong-badge"
+          >
+            × Wrong
+          </span>
+
+
+          <!-- UNANSWERED -->
+
+          <span
+            *ngIf="
+              !isAnswered(item)
+            "
+            class="unanswered-badge"
+          >
+            — Unanswered
+          </span>
+
+        </div>
+
+
+        <!-- QUESTION -->
+
+        <h3>
+          {{ item.question }}
+        </h3>
+
+
+        <!-- YOUR ANSWER -->
+
+        <div class="answer-box">
+
+          <span>
+            Your Answer
+          </span>
+
+
+          <p
+            *ngIf="
+              isAnswered(item)
+            "
+          >
+            {{ item.userAnswer }}
+          </p>
+
+
+          <p
+            class="no-answer"
+            *ngIf="
+              !isAnswered(item)
+            "
+          >
+            No answer provided.
+          </p>
+
+        </div>
+
+
+        <!-- CORRECT ANSWER -->
+
+        <div class="correct-answer-box">
+
+          <span>
+            Correct Answer
+          </span>
+
+          <p>
+            {{ item.correctAnswer }}
+          </p>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         ACTIONS
+    ================================================== -->
+
+    <section class="actions">
+
+      <button
+        class="secondary-btn"
+        (click)="backToEvaluation()"
+      >
+        ← Evaluation
+      </button>
+
+
+      <button
+        class="back-btn"
+        (click)="cancel()"
+      >
+        ← Dashboard
+      </button>
+
+
+      <button
+        class="primary-btn"
+        (click)="retakeInterview()"
+      >
+        Retake Interview →
+      </button>
+
+    </section>
+
+  </main>
+
+</div>
