@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  private apiUrl = 'http://localhost:5000/api/auth';
+  private apiUrl = 'https://ai-interview-um31.onrender.com/api/auth';
 
   constructor(private http: HttpClient) {}
 

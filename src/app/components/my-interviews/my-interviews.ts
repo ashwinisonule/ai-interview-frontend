@@ -49,11 +49,11 @@ export class MyInterviews
 
 
   private interviewApiUrl =
-    'http://localhost:5000/api/interviews';
+    'https://ai-interview-um31.onrender.com/api/interviews';
 
 
   private resultApiUrl =
-    'http://localhost:5000/api/results';
+    'https://ai-interview-um31.onrender.com/api/results';
 
 
   // ==================================================

@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 export class InterviewService {
 
   private apiUrl =
-    'http://localhost:5000/api/interviews';
+    'https://ai-interview-um31.onrender.com/api/interviews';
 
 
   constructor(

@@ -56,7 +56,7 @@ export class Evaluation implements OnInit {
 
 
   private apiUrl =
-    'http://localhost:5000/api/results';
+    'https://ai-interview-um31.onrender.com/api/results';
 
 
   constructor(
